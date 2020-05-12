@@ -11,6 +11,7 @@ db:
     - METASFRESH_PASSWORD=metasfresh
     - METASFRESH_DBNAME=metasfresh
     - DB_SYSPASS=System
+    - POSTGRES_PASSWORD=ip2LmNzXX8p8iXg9lZTWEJ9524kQDbXFudB7LR03T-xK9fLweX3TLMkA2AYcEiaS
 app:
   build: app
   hostname: app
@@ -25,6 +26,7 @@ app:
   restart: always
   volumes:
     - ./volumes/app/log:/opt/metasfresh/log:rw
+    - ./volumes/app/heapdump:/opt/metasfresh/heapdump:rw
     - /etc/localtime:/etc/localtime:ro
     - /etc/timezone:/etc/timezone:ro
   environment:
@@ -46,6 +48,7 @@ webapi:
   restart: always
   volumes:
     - ./volumes/webapi/log:/opt/metasfresh-webui-api/log:rw
+    - ./volumes/webapi/heapdump:/opt/metasfresh-webui-api/heapdump:rw
     - /etc/localtime:/etc/localtime:ro
     - /etc/timezone:/etc/timezone:ro
 webui:
